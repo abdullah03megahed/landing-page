@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>صفحة التسجيل</title>
+  <style>
+    body {
+      font-family: "Cairo", sans-serif;
+      background: #f8f9fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    form {
+      background: #fff;
+      padding: 25px 35px;
+      border-radius: 15px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 320px;
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 20px;
+      color: #007bff;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+      text-align: right;
+    }
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 15px;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="form">
+    <h2>نموذج التسجيل</h2>
+    <input type="text" id="name" placeholder="الاسم" required>
+    <input type="text" id="gov" placeholder="المحافظة" required>
+    <input type="text" id="center" placeholder="المركز" required>
+    <input type="text" id="village" placeholder="القرية" required>
+    <input type="tel" id="phone" placeholder="رقم الهاتف" required>
+    <button type="submit">إرسال</button>
+  </form>
+
+  <script>
+    const scriptURL = "https://script.google.com/macros/s/AKfycbwJpGWsq6GKTh6kNV9saYOHrOzOeDMJz2x1roW1xhF82QZerrEDs8V0uJ8LNsj51MiCnw/exec"; // ضع رابط السكربت هنا
+
+    document.getElementById("form").addEventListener("submit", e => {
+      e.preventDefault();
+
+      const data = {
+        name: document.getElementById("name").value,
+        gov: document.getElementById("gov").value,
+        center: document.getElementById("center").value,
+        village: document.getElementById("village").value,
+        phone: document.getElementById("phone").value
+      };
+
+      fetch(scriptURL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      }).then(() => {
+        alert("تم الإرسال بنجاح ✅");
+        document.getElementById("form").reset();
+      }).catch(() => {
+        alert("حدث خطأ أثناء الإرسال ❌");
+      });
+    });
+  </script>
+
+</body>
+</html>
