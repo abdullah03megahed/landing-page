@@ -1,94 +1,554 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>صفحة التسجيل</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>وكلائنا</title>
   <style>
-    body {
-      font-family: "Cairo", sans-serif;
-      background: #f8f9fa;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    form {
-      background: #fff;
-      padding: 25px 35px;
-      border-radius: 15px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      width: 320px;
+
+    body {
+      background-color: #f9f9f9;
+      padding-top: 20px;
+    }
+
+ 
+     .header-image {
+    width: 100%;
+    height: 204px;
+    margin: 0 auto 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .header-image img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+  }
+
+    
+    .page-title {
       text-align: center;
+      color: #0D3B66;
+      font-size: 48px;
+      margin: 20px 0 30px;
+      font-weight: bold;
     }
-    h2 {
+
+    
+    .form-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 25px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .form-group {
       margin-bottom: 20px;
-      color: #007bff;
     }
-    input {
-      width: 90%;
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    input, select, textarea {
+      width: 100%;
       padding: 10px;
-      margin: 8px 0;
       border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 14px;
-      text-align: right;
-    }
-    button {
-      background: #007bff;
-      color: white;
-      border: none;
-      padding: 10px 20px;
       border-radius: 6px;
-      cursor: pointer;
-      font-size: 15px;
-      margin-top: 10px;
+      font-size: 16px;
     }
+
+    .file-input {
+      padding: 6px;
+    }
+
+    .required {
+      color: red;
+    }
+
+    .optional {
+      color: #666;
+      font-size: 14px;
+      font-style: italic;
+    }
+
+    
+    .row {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .col {
+      flex: 1;
+    }
+
+    .triple-row {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .triple-row .col {
+      flex: 1;
+    }
+
+   
+    .radio-group {
+      display: flex;
+      gap: 20px;
+      margin-top: 6px;
+    }
+
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .radio-option input {
+      width: auto;
+    }
+
+    button {
+      background-color: #0D3B66;
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
     button:hover {
-      background: #0056b3;
+      background-color: #0a2c4d;
+    }
+
+    @media (max-width: 768px) {
+      .row, .triple-row {
+        flex-direction: column;
+        gap: 15px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <form id="form">
-    <h2>نموذج التسجيل</h2>
-    <input type="text" id="name" placeholder="الاسم" required>
-    <input type="text" id="gov" placeholder="المحافظة" required>
-    <input type="text" id="center" placeholder="المركز" required>
-    <input type="text" id="village" placeholder="القرية" required>
-    <input type="tel" id="phone" placeholder="رقم الهاتف" required>
-    <button type="submit">إرسال</button>
-  </form>
+ 
+  <div class="header-image">
+    
+    <img src="C:\Users\hp\Desktop\PHOTO-2025-11-04-23-03-59.jpg" alt="صورة الهيدر">
+  </div>
+
+  <h1 class="page-title">وكلائنا</h1>
+
+  <div class="form-container">
+    <form id="agentForm" enctype="multipart/form-data">
+
+     
+      <div class="row">
+        <div class="col">
+          <label>الاسم بالكامل <span class="required">*</span></label>
+          <input type="text" name="fullName" required />
+        </div>
+        <div class="col">
+          <label>رقم الهاتف <span class="required">*</span></label>
+          <input type="tel" name="phone" required placeholder="0123456789" />
+        </div>
+      </div>
+
+     
+      <div class="row">
+        <div class="col">
+          <label>البريد الإلكتروني <span class="optional">(اختياري)</span></label>
+          <input type="email" name="email" />
+        </div>
+        <div class="col">
+          <label>الرقم القومي <span class="required">*</span></label>
+          <input type="text" name="nationalId" required minlength="14" maxlength="14" pattern="\d{14}" placeholder="14 رقمًا" />
+        </div>
+      </div>
+
+      
+      <div class="row">
+        <div class="col">
+          <label>المؤهل <span class="required">*</span></label>
+          <input type="text" name="qualification" required />
+        </div>
+        <div class="col">
+          <label>الموقف من التجنيد <span class="required">*</span></label>
+          <select name="militaryStatus" required>
+            <option value="">اختر...</option>
+            <option value="أدى الخدمة">أدى الخدمة</option>
+            <option value="معفي">معفي</option>
+            <option value="مستثنى">مستثنى</option>
+            <option value="لم يبلغ السن">لم يبلغ السن</option>
+            <option value="أخرى">أخرى</option>
+          </select>
+        </div>
+      </div>
+
+     
+      <div class="row">
+        <div class="col">
+          <label>اللغات <span class="required">*</span></label>
+          <input type="text" name="languages" placeholder="مثال: عربي، إنجليزي" required />
+        </div>
+        <div class="col">
+          <label>المسمى الوظيفي <span class="required">*</span></label>
+          <select name="jobTitle" required>
+            <option value="">اختر...</option>
+            <option value="مبيعات">مبيعات</option>
+            <option value="تسويق">تسويق</option>
+            <option value="وكيل حصري">وكيل حصري</option>
+            <option value="تدريب مجاني">تدريب مجاني</option>
+          </select>
+        </div>
+      </div>
+
+     
+      <div class="form-group">
+        <label>صورة شخصية <span class="required">*</span></label>
+        <input type="file" name="photo" class="file-input" accept="image/*" required />
+      </div>
+
+      <div class="form-group">
+        <label>CV <span class="required">*</span></label>
+        <input type="file" name="cv" class="file-input" accept=".pdf,.doc,.docx" required />
+      </div>
+
+      <div class="form-group">
+        <label>البطاقة <span class="required">*</span></label>
+        <input type="file" name="idCard" class="file-input" accept="image/*,.pdf" required />
+      </div>
+
+      <div class="form-group">
+        <label>لينكد إن <span class="optional">(اختياري)</span></label>
+        <input type="url" name="linkedin" placeholder="https://linkedin.com/in/..." />
+      </div>
+
+     
+      <div class="triple-row">
+        <div class="col">
+          <label>المحافظة <span class="required">*</span></label>
+          <select id="governorate" name="governorate" required>
+            <option value="">اختر المحافظة</option>
+          </select>
+        </div>
+        <div class="col">
+          <label>المركز <span class="required">*</span></label>
+          <select id="center" name="center" required disabled>
+            <option value="">اختر المحافظةأولا</option>
+          </select>
+        </div>
+        <div class="col">
+          <label>القرية <span class="required">*</span></label>
+          <select id="village" name="village" required disabled>
+            <option value="">اختر المركزأولا</option>
+          </select>
+        </div>
+      </div>
+
+     
+      <div class="form-group">
+        <label>هل لديك مهارات في الطلب؟ <span class="required">*</span></label>
+        <div class="radio-group">
+          <div class="radio-option">
+            <input type="radio" id="skills_yes" name="skills" value="نعم" required />
+            <label for="skills_yes">نعم</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="skills_no" name="skills" value="لا" required />
+            <label for="skills_no">لا</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>هل لديك سيارة؟ <span class="required">*</span></label>
+        <div class="radio-group">
+          <div class="radio-option">
+            <input type="radio" id="car_yes" name="hasCar" value="نعم" required />
+            <label for="car_yes">نعم</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="car_no" name="hasCar" value="لا" required />
+            <label for="car_no">لا</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>هل لديك تدريبات سابقة؟ <span class="required">*</span></label>
+        <div class="radio-group">
+          <div class="radio-option">
+            <input type="radio" id="training_yes" name="previousTraining" value="نعم" required />
+            <label for="training_yes">نعم</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="training_no" name="previousTraining" value="لا" required />
+            <label for="training_no">لا</label>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit">إرسال الطلب</button>
+    </form>
+  </div>
 
   <script>
-    const scriptURL = "https://script.google.com/macros/s/AKfycbwJpGWsq6GKTh6kNV9saYOHrOzOeDMJz2x1roW1xhF82QZerrEDs8V0uJ8LNsj51MiCnw/exec"; // ضع رابط السكربت هنا
+    const egyptData = {
+      "القاهرة": {
+        "مراكز": {
+          "القاهرة الجديدة": ["التجمع الأول", "التجمع الثالث", "المنطقة الشمالية", "المنطقة الجنوبية"],
+          "المعادي": ["المعادي الجديدة", "المعادي القديمة", "وادي دجلة", "الرحاب"],
+          "الزيتون": ["الزهراء", "السلام", "الزيتون", "المطرية"],
+          "المرج": ["المرج الجديدة", "المندرة", "أسكان المستقبل", "عزبة النخل"],
+          "حلوان": ["حلوان", "المعصرة", "المنيا", "العاشر من رمضان"]
+        }
+      },
+      "الجيزة": {
+        "مراكز": {
+          "العجوزة": ["العجوزة", "جزيرة الذهب", "الدقي", "المنيب"],
+          "الهرم": ["الوراق", "كفر طهرمس", "منشأة القناطر", "الرماية"],
+          "أكتوبر": ["مدينة الأشجار", "الحصري", "المنصورية", "الصف"],
+          "المنصورية": ["المنصورية", "الرماية", "كفر حكيم"],
+          "كرداسة": ["كرداسة", "منشأة ناصر", "أبو رواش"]
+        }
+      },
+      "الإسكندرية": {
+        "مراكز": {
+          "إسكندرية": ["السيوف", "سموحة", "سيدي جابر", "العامرية", "العصافرة"],
+          "العجمي": ["العجمي", "المندرة", "الحضرة", "النشا"],
+          "برج العرب": ["برج العرب الجديدة", "الحضرة", "الساحل الشمالي"]
+        }
+      },
+      "الشرقية": {
+        "مراكز": {
+          "الزقازيق": ["الزقازيق", "أولاد صقر", "منيا القمح", "ديرب نجم"],
+          "بلبيس": ["بلبيس", "صان الحجر", "كفر صير", "الشوبك"],
+          "ههيا": ["ههيا", "الإبراهيمية", "أبو حماد", "فاقوس"]
+        }
+      },
+      "الدقهلية": {
+        "مراكز": {
+          "المنصورة": ["المنصورة", "طلخا", "ميت غمر", "دكرنس"],
+          "أجا": ["أجا", "ميت سخا", "السنبلاوين", "نبروه"],
+          "السنبلاوين": ["السنبلاوين", "البساتين", "كفر البطيخ"]
+        }
+      },
+      "الغربية": {
+        "مراكز": {
+          "طنطا": ["طنطا", "سمنود", "بصيل", "الرزيقات"],
+          "المحلة الكبرى": ["المحلة", "سبرباي", "صفط", "كفر الزيات"],
+          "زفتى": ["زفتى", "السنطة", "بسيون", "قويسنا"]
+        }
+      },
+      "المنوفية": {
+        "مراكز": {
+          "شبين الكوم": ["شبين الكوم", "بركة السبع", "تلا", "الباجور"],
+          "منوف": ["منوف", "أشمون", "قويسنا", "سرس الليان"]
+        }
+      },
+      "القليوبية": {
+        "مراكز": {
+          "بنها": ["بنها", "قليوب", "كفر شكر", "طوخ"],
+          "شبرا الخيمة": ["شبرا الخيمة", "قها", "كفر عبدو", "منية ناصر"]
+        }
+      },
+      "كفر الشيخ": {
+        "مراكز": {
+          "كفر الشيخ": ["كفر الشيخ", "فوه", "قلين", "بيلا"],
+          "دسوق": ["دسوق", "مطوبس", "سيدى سالم", "البرلس"]
+        }
+      },
+      "البحيرة": {
+        "مراكز": {
+          "دمنهور": ["دمنهور", "إدكو", "أبو المطامير", "المحمودية"],
+          "رشيد": ["رشيد", "إيتاى البارود", "حوش عيسى", "الدلنجات"]
+        }
+      },
+      "الإسماعيلية": {
+        "مراكز": {
+          "الإسماعيلية": ["الإسماعيلية", "فايد", "القصاصين", "أبو صوير"],
+          "القنطرة شرق": ["القنطرة شرق", "القنطرة غرب", "الكيلو 72"]
+        }
+      },
+      "السويس": {
+        "مراكز": {
+          "السويس": ["السويس", "عين السخنة", "العريش الجديدة", "بورتوفيق"]
+        }
+      },
+      "بورسعيد": {
+        "مراكز": {
+          "بورسعيد": ["بورسعيد", "العرب", "الضواحي", "الزهور"]
+        }
+      },
+      "دمياط": {
+        "مراكز": {
+          "دمياط": ["دمياط", "كفر سعد", "فارسكور", "الروضة"],
+          "رأس البر": ["رأس البر", "السرو", "الغصين"]
+        }
+      },
+      "البحر الأحمر": {
+        "مراكز": {
+          "الغردقة": ["الغردقة", "القصير", "مرسى علم", "رأس غارب"],
+          "سفاجا": ["سفاجا", "الزعفرانة", "الشلاتين"]
+        }
+      },
+      "الوادي الجديد": {
+        "مراكز": {
+          "الخارجة": ["الخارجة", "باريس", "الداخلة", "الفرافرة", "الواحات البحرية"]
+        }
+      },
+      "مطروح": {
+        "مراكز": {
+          "مرسى مطروح": ["مرسى مطروح", "سيدي براني", "السلوم", "النجيلة", "براني"],
+          "الضبعة": ["الضبعة", "الحمام", "العلمين"]
+        }
+      },
+      "شمال سيناء": {
+        "مراكز": {
+          "العريش": ["العريش", "الشيخ زويد", "رفح", "بئر العبد"],
+          "الحسنة": ["الحسنة", "نجع المقدم", "الروضة"]
+        }
+      },
+      "جنوب سيناء": {
+        "مراكز": {
+          "الطور": ["الطور", "أبو رديس", "أبو زنيمة", "رأس سدر"],
+          "شرم الشيخ": ["شرم الشيخ", "نويبع", "دهب", "سانت كاترين"]
+        }
+      },
+      "بني سويف": {
+        "مراكز": {
+          "بني سويف": ["بني سويف", "الواسطى", "ناصر", "إهناسيا", "ببا"],
+          "الفيشن": ["الفيشن", "سمسطا", "الكوم الأحمر"]
+        }
+      },
+      "الفيوم": {
+        "مراكز": {
+          "الفيوم": ["الفيوم", "إطسا", "طامية", "سنورس", "الحادقة"],
+          "أبشواي": ["أبشواي", "يوسف الصديق", "الساحل"]
+        }
+      },
+      "المنيا": {
+        "مراكز": {
+          "المنيا": ["المنيا", "ديرمواس", "سمالوط", "مغاغة", "بني مزار"],
+          "مطاي": ["مطاي", "أبو قرقاص", "العدوة", "مطاي الجديدة"]
+        }
+      },
+      "أسيوط": {
+        "مراكز": {
+          "أسيوط": ["أسيوط", "أبنوب", "أبو تيج", "الغنايم", "ساحل سليم"],
+          "ديروط": ["ديروط", "صدفا", "منفلوط", "القوصية"]
+        }
+      },
+      "سوهاج": {
+        "مراكز": {
+          "سوهاج": ["سوهاج", "أخميم", "دار السلام", "طهطا", "جهينة"],
+          "المراغة": ["المراغة", "العسيرات", "ساقلتة", "جهينة الغربية"]
+        }
+      },
+      "قنا": {
+        "مراكز": {
+          "قنا": ["قنا", "أبو تشت", "نجع حمادي", "قفط", "قوص"],
+          "الوقف": ["الوقف", "فرشوط", "شطب", "القرنة"]
+        }
+      },
+      "الأقصر": {
+        "مراكز": {
+          "الأقصر": ["الأقصر", "الزينية", "القرنة", "إسنا", "الطود"]
+        }
+      },
+      "أسوان": {
+        "مراكز": {
+          "أسوان": ["أسوان", "السباعية", "الرديسية", "الشطب", "كلابشة"],
+          "إدفو": ["إدفو", "المحاميد", "الشغب", "القصاصين", "الرديسية"],
+          "كوم أمبو": ["كوم أمبو", "السباعية", "العنب", "الكراتية", "الشطب"]
+        }
+      }
+    };
 
-    document.getElementById("form").addEventListener("submit", e => {
-      e.preventDefault();
+   
+    const governorateSelect = document.getElementById('governorate');
+    const centerSelect = document.getElementById('center');
+    const villageSelect = document.getElementById('village');
 
-      const data = {
-        name: document.getElementById("name").value,
-        gov: document.getElementById("gov").value,
-        center: document.getElementById("center").value,
-        village: document.getElementById("village").value,
-        phone: document.getElementById("phone").value
-      };
+    for (const gov in egyptData) {
+      const option = document.createElement('option');
+      option.value = gov;
+      option.textContent = gov;
+      governorateSelect.appendChild(option);
+    }
 
-      fetch(scriptURL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      }).then(() => {
-        alert("تم الإرسال بنجاح ✅");
-        document.getElementById("form").reset();
-      }).catch(() => {
-        alert("حدث خطأ أثناء الإرسال ❌");
-      });
+    governorateSelect.addEventListener('change', function () {
+      const selectedGov = this.value;
+      centerSelect.innerHTML = '<option value="">اختر المركز</option>';
+      villageSelect.innerHTML = '<option value="">اختر القرية</option>';
+      centerSelect.disabled = true;
+      villageSelect.disabled = true;
+
+      if (selectedGov) {
+        const centers = egyptData[selectedGov].مراكز;
+        for (const center in centers) {
+          const opt = document.createElement('option');
+          opt.value = center;
+          opt.textContent = center;
+          centerSelect.appendChild(opt);
+        }
+        centerSelect.disabled = false;
+      }
+    });
+
+    centerSelect.addEventListener('change', function () {
+      const selectedGov = governorateSelect.value;
+      const selectedCenter = this.value;
+      villageSelect.innerHTML = '<option value="">اختر القرية</option>';
+      villageSelect.disabled = true;
+
+      if (selectedGov && selectedCenter) {
+        const villages = egyptData[selectedGov].مراكز[selectedCenter];
+        villages.forEach(v => {
+          const opt = document.createElement('option');
+          opt.value = v;
+          opt.textContent = v;
+          villageSelect.appendChild(opt);
+        });
+        villageSelect.disabled = false;
+      }
+    });
+
+    
+    document.getElementById('agentForm').addEventListener('submit', function (e) {
+      const phone = document.querySelector('input[name="phone"]').value;
+      const phoneRegex = /^01[0125]\d{8}$/;
+      if (!phoneRegex.test(phone)) {
+        e.preventDefault();
+        alert('رقم الهاتف غير صحيح. يجب أن يبدأ بـ 010، 011، 012، أو 015 ويتكون من 11 رقمًا.');
+        return;
+      }
+      alert('تم إرسال الطلب بنجاح!');
     });
   </script>
-
 </body>
 </html>
